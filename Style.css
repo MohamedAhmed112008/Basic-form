@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+:root
+{
+    --Main-color:rgb(13 187 237);
+    --Secoundary-color:#293241;
+}
+
+body
+{
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--Secoundary-color);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form
+{
+    background-color:hsl(214 26% 27% / 18);
+    padding:50px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.form::after,.form::before
+{
+    content: '';
+    position: absolute;
+    height: 100%;
+    background-image: conic-gradient( from var(--angle), transparent 30% ,var(--Main-color));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: -1;
+    border-radius: 20px;
+    padding: 3px;
+    animation: 3s spin  linear infinite;
+}
+
+.form::before
+{
+    filter: blur(0.3rem);
+}
+
+.form h2
+{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 48px;
+    color: var(--Main-color);
+}
+
+.form form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 18px 0;
+    margin: 0 0 35px 0;
+    min-width:300px;
+    align-items: center;
+}
+
+.form form input
+{
+    padding: 20px 15px;
+    border: none;
+    background-color: var(--Secoundary-color);
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+    color:#999;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.form form input:focus
+{
+    border: 1px solid var(--Main-color);
+    color: var(--Main-color);
+}
+
+.form form input::placeholder
+{
+    color:#666;
+    opacity: 50%;
+    transition: 0.3s;
+}
+
+.form form input:focus::placeholder
+{
+    color: var(--Main-color);
+}
+
+.form .info
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 0 20px;
+}
+
+.form .info .check input
+{
+    background-color: var(--Main-color);
+    margin-right: 10px;
+}
+
+.form .info .check label
+{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--Main-color);
+}
+
+.form .info h4{
+    font-weight: 400;
+    color: var(--Main-color);
+}
+
+.form .info span
+{
+    font-weight: 800;
+    text-decoration: 1px var(--Secoundary-color);
+    cursor: pointer;
+}
+
+.form a{
+    text-decoration: none;
+    background-color: var(--Secoundary-color);
+    width: fit-content;
+    padding: 15px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 48px;
+    border-radius: 10px;
+    color: #999;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    transition: 0.3s;
+}
+
+.form a:hover
+{
+    color: var(--Main-color);
+    border: 1px solid var(--Main-color);
+}
+
+@keyframes spin
+{
+    form
+    {
+        --angle:0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
+
+@media(max-width: 767px)
+{
+      .form
+      {
+        padding: 30px;
+        max-width :300px;
+      }
+      .form form
+      {
+        min-width: auto;
+      }
+      .form form input
+      {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .form form input:hover
+      {
+        padding: 20px;
+      }
+      .form .info
+      {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .form a
+      {
+        padding: 10px 15px;
+        font-size: 16px;
+      }
+      .form::after
+      {
+        padding: 5px;
+      }
+      .form::before
+      {
+        filter: blur(1rem);
+      }
+}
